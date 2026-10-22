@@ -1,2 +1,2 @@
-customers,churned,churn_rate_pct,mrr,mrr_lost,mrr_lost_pct
-7043,1869,26.5,456117.0,139131.0,30.5
+customers,total_customers,churned,churned_customers,churn_rate_pct,mrr,total_monthly_charges,mrr_lost,monthly_charges_from_churned_customers,mrr_lost_pct,monthly_charges_at_risk_pct
+7043,7043,1869,1869,26.5,456117.0,456117.0,139131.0,139131.0,30.5,30.5

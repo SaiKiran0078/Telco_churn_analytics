@@ -1,6 +1,6 @@
-tenure_bucket,customers,churn_rate_pct,mrr_lost
-1) 0-6 months,1481,52.9,49896.0
-2) 7-12 months,705,35.9,19058.0
-3) 13-24 months,1024,28.7,23082.0
-4) 25-48 months,1594,20.4,27463.0
-5) 49-72 months,2239,9.5,19632.0
+tenure_bucket,customers,total_customers,churned_customers,churn_rate_pct,mrr_lost,monthly_charges_from_churned_customers
+1) 0-6 months,1481,1481,784,52.9,49896.0,49896.0
+2) 7-12 months,705,705,253,35.9,19058.0,19058.0
+3) 13-24 months,1024,1024,294,28.7,23082.0,23082.0
+4) 25-48 months,1594,1594,325,20.4,27463.0,27463.0
+5) 49-72 months,2239,2239,213,9.5,19632.0,19632.0

@@ -1,6 +1,6 @@
-protective_services,customers,churn_rate_pct,avg_monthly_charge
-0,1267,56.7,67.8
-1,1467,38.9,73.8
-2,1372,23.8,79.6
-3,941,12.4,82.8
-4,470,5.3,90.9
+protective_services,customers,total_customers,churned_customers,churn_rate_pct,avg_monthly_charge
+0,1267,1267,718,56.7,67.8
+1,1467,1467,570,38.9,73.8
+2,1372,1372,326,23.8,79.6
+3,941,941,117,12.4,82.8
+4,470,470,25,5.3,90.9
