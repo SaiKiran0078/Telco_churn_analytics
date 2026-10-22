@@ -1,0 +1,16 @@
+customerID,segment,Contract,tenure,MonthlyCharges,churn_probability,recommended_action
+3292-PBZEJ,"Senior fiber, month-to-month",Month-to-month,11,111.4,0.7264,Proactive call; senior support and a 12-month price lock
+5956-YHHRX,"Senior fiber, month-to-month",Month-to-month,21,104.35,0.7616,Proactive call; senior support and a 12-month price lock
+5150-ITWWB,"Senior fiber, month-to-month",Month-to-month,3,94.85,0.826,Proactive call; senior support and a 12-month price lock
+8161-QYMTT,"E-check fiber, month-to-month",Month-to-month,7,94.1,0.8053,Offer a bill credit for switching to auto-pay and a 12-month contract
+7145-FEJWU,"E-check fiber, month-to-month",Month-to-month,12,105.3,0.7193,Offer a bill credit for switching to auto-pay and a 12-month contract
+6350-XFYGW,"Senior fiber, month-to-month",Month-to-month,4,94.75,0.794,Proactive call; senior support and a 12-month price lock
+5995-SNNEW,"Senior fiber, month-to-month",Month-to-month,23,104.45,0.7138,Proactive call; senior support and a 12-month price lock
+5935-FCCNB,"Senior fiber, month-to-month",Month-to-month,17,94.2,0.7896,Proactive call; senior support and a 12-month price lock
+0916-QOFDP,"Senior fiber, month-to-month",Month-to-month,14,95.8,0.7734,Proactive call; senior support and a 12-month price lock
+3320-VEOYC,"Senior fiber, month-to-month",Month-to-month,14,95.6,0.7749,Proactive call; senior support and a 12-month price lock
+3452-GWUIN,"Senior fiber, month-to-month",Month-to-month,19,94.95,0.7749,Proactive call; senior support and a 12-month price lock
+7668-XCFYV,"Senior fiber, month-to-month",Month-to-month,17,92.55,0.7884,Proactive call; senior support and a 12-month price lock
+9290-SHCMB,"Senior fiber, month-to-month",Month-to-month,13,96.85,0.7517,Proactive call; senior support and a 12-month price lock
+6734-GMPVK,"E-check fiber, month-to-month",Month-to-month,5,105.3,0.689,Offer a bill credit for switching to auto-pay and a 12-month contract
+2081-VEYEH,"E-check fiber, month-to-month",Month-to-month,3,107.95,0.671,Offer a bill credit for switching to auto-pay and a 12-month contract

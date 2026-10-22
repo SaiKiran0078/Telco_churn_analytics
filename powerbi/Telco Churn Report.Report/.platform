@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Telco Churn Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fbc6c385-16f6-5dd9-b001-b4a0467d0524"
+  }
+}

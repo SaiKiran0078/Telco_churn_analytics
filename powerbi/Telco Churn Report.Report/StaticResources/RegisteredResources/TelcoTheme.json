@@ -1,0 +1,55 @@
+{
+  "name": "TelcoTheme",
+  "dataColors": [
+    "#2A78D6",
+    "#E34948",
+    "#00A6A6",
+    "#F28E2B",
+    "#7A5195",
+    "#9EC5F4",
+    "#8C9AAE",
+    "#0F3057"
+  ],
+  "good": "#0B6B0B",
+  "neutral": "#656E7F",
+  "bad": "#B42323",
+  "maximum": "#2A78D6",
+  "center": "#E6EBF2",
+  "minimum": "#F28E2B",
+  "foreground": "#1F2937",
+  "background": "#FFFFFF",
+  "tableAccent": "#0F3057",
+  "textClasses": {
+    "callout": {
+      "fontSize": 24,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#0F3057"
+    },
+    "title": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#1F2937"
+    },
+    "label": {
+      "fontSize": 9,
+      "fontFace": "Segoe UI",
+      "color": "#656E7F"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#1F2937"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "wordWrap": [
+          {
+            "show": true
+          }
+        ]
+      }
+    }
+  }
+}

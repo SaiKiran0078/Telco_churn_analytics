@@ -1,0 +1,4 @@
+Contract,customers,pct_of_customers,churn_rate_pct,pct_of_all_churners
+Month-to-month,3875,55.0,42.7,88.6
+One year,1473,20.9,11.3,8.9
+Two year,1695,24.1,2.8,2.6

@@ -1,0 +1,11 @@
+rnk,InternetService,Contract,PaymentMethod,customers,churn_rate_pct,mrr_lost,cumulative_pct_of_mrr_lost
+1,Fiber optic,Month-to-month,Electronic check,1307,60.4,68282.0,49.1
+2,Fiber optic,Month-to-month,Bank transfer,327,45.6,13062.0,58.5
+3,Fiber optic,Month-to-month,Credit card,293,41.6,10731.0,66.2
+4,DSL,Month-to-month,Electronic check,474,40.5,8776.0,72.5
+5,Fiber optic,Month-to-month,Mailed check,201,50.7,8407.0,78.6
+6,DSL,Month-to-month,Mailed check,367,30.8,5292.0,82.4
+7,Fiber optic,One year,Electronic check,196,26.0,5150.0,86.1
+8,DSL,Month-to-month,Credit card,185,27.0,2475.0,87.9
+9,Fiber optic,One year,Credit card,150,15.3,2392.0,89.6
+10,Fiber optic,One year,Bank transfer,157,14.6,2344.0,91.3

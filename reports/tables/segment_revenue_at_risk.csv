@@ -1,0 +1,6 @@
+segment,customers,churners,mrr,mrr_lost,churn_rate,share_of_mrr_lost_%
+"E-check fiber, month-to-month",1535,730,118016.4,57267.0,47.6,41.2
+"Senior fiber, month-to-month",944,457,76868.2,37100.0,48.4,26.7
+Mid-tenure month-to-month,1501,449,96595.8,31020.4,29.9,22.3
+Loyal multi-service,1537,120,132469.3,11441.8,7.8,8.2
+Phone-only budget,1526,113,32166.8,2301.6,7.4,1.7

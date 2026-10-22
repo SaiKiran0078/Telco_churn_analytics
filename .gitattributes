@@ -1,0 +1,7 @@
+* text=auto
+*.png binary
+*.joblib binary
+*.ipynb -diff
+*.tmdl text eol=lf
+*.json text eol=lf
+*.cmd text eol=crlf

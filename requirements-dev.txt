@@ -1,0 +1,3 @@
+# Only needed for the optional Power BI schema check (tests/test_powerbi.py)
+jsonschema>=4.20
+referencing>=0.30

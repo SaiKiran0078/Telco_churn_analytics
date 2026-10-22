@@ -1,0 +1,13 @@
+Contract,PaymentMethod,customers,churn_rate_pct
+Month-to-month,Electronic check,1850,53.7
+Month-to-month,Bank transfer,589,34.1
+Month-to-month,Credit card,543,32.8
+Month-to-month,Mailed check,893,31.6
+One year,Electronic check,347,18.4
+One year,Credit card,398,10.3
+One year,Bank transfer,391,9.7
+One year,Mailed check,337,6.8
+Two year,Electronic check,168,7.7
+Two year,Bank transfer,564,3.4
+Two year,Credit card,581,2.2
+Two year,Mailed check,382,0.8

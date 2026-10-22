@@ -1,0 +1,36 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -e .
+      - name: Rebuild the pipeline end to end
+        run: python scripts/run_all.py > /dev/null
+      - name: Package entry-point smoke test
+        run: python -m churn.predict --help
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+  powerbi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -e . -r requirements-dev.txt
+      - name: Clone Microsoft Power BI file schemas
+        run: git clone --depth 1 https://github.com/microsoft/json-schemas.git "$RUNNER_TEMP/schemas"
+      - name: Power BI project checks (schemas, field references, parity with Python results)
+        run: python -m unittest tests.test_powerbi -v
+        env:
+          MS_SCHEMAS: ${{ runner.temp }}/schemas

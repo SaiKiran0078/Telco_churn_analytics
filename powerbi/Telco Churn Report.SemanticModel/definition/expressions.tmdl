@@ -1,0 +1,6 @@
+expression RepoRoot = "C:\telco-churn-analytics" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: fc8384cb-c725-592c-99db-33c87550dfe8
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navigation

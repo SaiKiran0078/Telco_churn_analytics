@@ -1,0 +1,15 @@
+table 'Risk Threshold'
+	lineageTag: 99082f93-dbda-5420-9221-2897c86114a7
+
+	column 'Risk Threshold'
+		dataType: double
+		formatString: 0%
+		lineageTag: 76f91a87-554e-5291-a890-f7a162e2ca5e
+		summarizeBy: none
+		sourceColumn: [Risk Threshold]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Risk Threshold' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 5, 95, 1 ), "Risk Threshold", [Value] / 100 )

@@ -1,0 +1,6 @@
+segment,customers,churn_rate,median_tenure,avg_monthly,avg_services,month_to_month,fiber,no_internet,e_check,senior
+"Senior fiber, month-to-month",944,48.0,25.0,81.4,4.0,84.0,79.0,0.0,62.0,100.0
+"E-check fiber, month-to-month",1535,48.0,14.0,76.9,3.9,83.0,68.0,0.0,100.0,0.0
+Mid-tenure month-to-month,1501,30.0,16.0,64.4,3.6,81.0,38.0,0.0,0.0,0.0
+Loyal multi-service,1537,8.0,65.0,86.2,6.1,5.0,47.0,0.0,8.0,9.0
+Phone-only budget,1526,7.0,25.0,21.1,1.0,34.0,0.0,100.0,8.0,3.0

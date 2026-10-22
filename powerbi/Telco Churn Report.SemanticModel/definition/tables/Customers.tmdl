@@ -1,0 +1,344 @@
+table Customers
+	lineageTag: 8278cc80-9999-5d46-80e1-277572e7d8e9
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: 52d6ae87-eaac-59fd-bed5-74d0631db136
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 98cd1b2f-e4d5-5efd-902a-8912ad21b4cb
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Senior Citizen'
+		dataType: string
+		lineageTag: 85de8178-4482-5080-96c4-99895ffeb63e
+		summarizeBy: none
+		sourceColumn: Senior Citizen
+
+		annotation SummarizationSetBy = Automatic
+
+	column Partner
+		dataType: string
+		lineageTag: 951f990e-0f72-535b-a348-a6ad6627eafb
+		summarizeBy: none
+		sourceColumn: Partner
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dependents
+		dataType: string
+		lineageTag: 5aae0cf4-b864-5a6c-b485-7259dbf8e2a7
+		summarizeBy: none
+		sourceColumn: Dependents
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tenure Months'
+		dataType: int64
+		formatString: 0
+		lineageTag: eda17c32-cabe-5fc1-9348-f7d40ff4ba07
+		summarizeBy: none
+		sourceColumn: Tenure Months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phone Service'
+		dataType: string
+		lineageTag: cc9ffd8a-f0d2-58f1-a131-64cdc483426c
+		summarizeBy: none
+		sourceColumn: Phone Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Multiple Lines'
+		dataType: string
+		lineageTag: 6726b7ec-072b-53f0-bdab-95ca75978ae2
+		summarizeBy: none
+		sourceColumn: Multiple Lines
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Internet Service'
+		dataType: string
+		lineageTag: ac2a274c-0ded-5259-a791-adccd84c49c8
+		summarizeBy: none
+		sourceColumn: Internet Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Online Security'
+		dataType: string
+		lineageTag: 79ca289a-c7ae-5f49-8304-208fc3745e22
+		summarizeBy: none
+		sourceColumn: Online Security
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Online Backup'
+		dataType: string
+		lineageTag: 78c367d3-43c7-531d-8acd-b39394d50472
+		summarizeBy: none
+		sourceColumn: Online Backup
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Protection'
+		dataType: string
+		lineageTag: 5eabd8ac-39fe-5dd6-8b73-9214e19f3fbe
+		summarizeBy: none
+		sourceColumn: Device Protection
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tech Support'
+		dataType: string
+		lineageTag: ee6711ba-a9f2-5a3a-b85a-d28a1c247103
+		summarizeBy: none
+		sourceColumn: Tech Support
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Streaming TV'
+		dataType: string
+		lineageTag: 2e8629b0-f53b-57f0-be0f-39fc87f70a75
+		summarizeBy: none
+		sourceColumn: Streaming TV
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Streaming Movies'
+		dataType: string
+		lineageTag: df48808f-0cae-58e7-b69b-86a29a5140f5
+		summarizeBy: none
+		sourceColumn: Streaming Movies
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contract
+		dataType: string
+		lineageTag: af96010c-8c8c-5d8d-8b77-52fc95d09361
+		summarizeBy: none
+		sourceColumn: Contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paperless Billing'
+		dataType: string
+		lineageTag: fb33f3ec-4ce2-5b5b-9b08-daab4f3c47e3
+		summarizeBy: none
+		sourceColumn: Paperless Billing
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Method'
+		dataType: string
+		lineageTag: 1d13e2ae-a4e9-535b-99f7-1bf183281e6b
+		summarizeBy: none
+		sourceColumn: Payment Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monthly Charges'
+		dataType: double
+		formatString: $#,0.00
+		lineageTag: 820ded4a-aa56-56c1-92e9-159f81133255
+		summarizeBy: none
+		sourceColumn: Monthly Charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Charges'
+		dataType: double
+		formatString: $#,0.00
+		lineageTag: bc1a5694-d3be-590b-a5e8-f37837411581
+		summarizeBy: none
+		sourceColumn: Total Charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column Churn
+		dataType: string
+		lineageTag: 79fa2a77-a4aa-54bf-a5e8-93514fa7e9dd
+		summarizeBy: none
+		sourceColumn: Churn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Flag'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3538f168-41d1-5e70-a3a9-94842658494a
+		summarizeBy: none
+		sourceColumn: Churn Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Status'
+		dataType: string
+		lineageTag: c626d131-f5a3-5fb4-9bb2-0237a977c7b2
+		summarizeBy: none
+		sourceColumn: Customer Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Num Services'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5fb45806-76ab-5f77-98aa-f2069c13b506
+		summarizeBy: none
+		sourceColumn: Num Services
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Protection Services Held'
+		dataType: string
+		lineageTag: 9b2054fe-664f-5ba3-b179-88bdee0b808b
+		summarizeBy: none
+		sourceColumn: Protection Services Held
+		sortByColumn: 'Protection Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Protection Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f11c64bd-6cde-5491-b0fe-8084196bd7bf
+		summarizeBy: none
+		sourceColumn: Protection Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tenure Band'
+		dataType: string
+		lineageTag: e3b32c07-348c-5c5c-a6ce-f3ccef833e0d
+		summarizeBy: none
+		sourceColumn: Tenure Band
+		sortByColumn: 'Tenure Band Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tenure Band Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8d824111-5288-53a7-a33b-c82c69f90545
+		summarizeBy: none
+		sourceColumn: Tenure Band Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Charge Band'
+		dataType: string
+		lineageTag: 70f8d8f9-598a-59af-b3fb-a29bb97bea16
+		summarizeBy: none
+		sourceColumn: Charge Band
+		sortByColumn: 'Charge Band Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Charge Band Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3eab751e-e9d2-57e7-b071-6d7d85d56190
+		summarizeBy: none
+		sourceColumn: Charge Band Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: 7d6f59c8-00c4-5a7b-9248-cdee2cb1b684
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Probability'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: d0abf66b-be02-5cbe-9ba2-709c37ddb51e
+		summarizeBy: none
+		sourceColumn: Churn Probability
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Tier'
+		dataType: string
+		lineageTag: 38fc6a7e-862a-5370-b0c9-958b2fcd91d4
+		summarizeBy: none
+		sourceColumn: Risk Tier
+		sortByColumn: 'Risk Tier Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Tier Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bf1b010d-ef9e-5646-9e58-68967e0c4e3b
+		summarizeBy: none
+		sourceColumn: Risk Tier Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Recommended Action'
+		dataType: string
+		lineageTag: e15bcbd9-db66-5c89-a56d-466c5debb21e
+		summarizeBy: none
+		sourceColumn: Recommended Action
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call List'
+		dataType: string
+		lineageTag: 8bc294b4-d027-570e-a991-36e9ff60f93c
+		summarizeBy: none
+		sourceColumn: Call List
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoRoot & "\data\raw\Telco-Customer-Churn.csv"), [Delimiter = ",", Columns = 21, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Blank Total Charges To 0" = Table.TransformColumns(#"Promoted Headers", {{"TotalCharges", each if Text.Trim(_) = "" then "0" else _, type text}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Blank Total Charges To 0", {{"SeniorCitizen", Int64.Type}, {"tenure", Int64.Type}, {"MonthlyCharges", type number}, {"TotalCharges", type number}}, "en-US"),
+				    #"Senior As Yes No" = Table.TransformColumns(#"Changed Type", {{"SeniorCitizen", each if _ = 1 then "Yes" else "No", type text}}),
+				    #"No Internet To No" = Table.ReplaceValue(#"Senior As Yes No", "No internet service", "No", Replacer.ReplaceText, {"OnlineSecurity", "OnlineBackup", "DeviceProtection", "TechSupport", "StreamingTV", "StreamingMovies"}),
+				    #"No Phone To No" = Table.ReplaceValue(#"No Internet To No", "No phone service", "No", Replacer.ReplaceText, {"MultipleLines"}),
+				    #"Clean Payment Method" = Table.TransformColumns(#"No Phone To No", {{"PaymentMethod", each Text.Replace(_, " (automatic)", ""), type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Clean Payment Method", {{"customerID", "Customer ID"}, {"gender", "Gender"}, {"SeniorCitizen", "Senior Citizen"}, {"tenure", "Tenure Months"}, {"PhoneService", "Phone Service"}, {"MultipleLines", "Multiple Lines"}, {"InternetService", "Internet Service"}, {"OnlineSecurity", "Online Security"}, {"OnlineBackup", "Online Backup"}, {"DeviceProtection", "Device Protection"}, {"TechSupport", "Tech Support"}, {"StreamingTV", "Streaming TV"}, {"StreamingMovies", "Streaming Movies"}, {"PaperlessBilling", "Paperless Billing"}, {"PaymentMethod", "Payment Method"}, {"MonthlyCharges", "Monthly Charges"}, {"TotalCharges", "Total Charges"}}),
+				    #"Churn Flag" = Table.AddColumn(#"Renamed Columns", "Churn Flag", each if [Churn] = "Yes" then 1 else 0, Int64.Type),
+				    #"Customer Status" = Table.AddColumn(#"Churn Flag", "Customer Status", each if [Churn] = "Yes" then "Churned" else "Retained", type text),
+				    #"Num Services" = Table.AddColumn(#"Customer Status", "Num Services", each (if [Phone Service] = "Yes" then 1 else 0) + (if [Internet Service] <> "No" then 1 else 0) + List.Count(List.Select({[Online Security], [Online Backup], [Device Protection], [Tech Support], [Streaming TV], [Streaming Movies]}, each _ = "Yes")), Int64.Type),
+				    #"Protection Sort" = Table.AddColumn(#"Num Services", "Protection Sort", each if [Internet Service] = "No" then -1 else List.Count(List.Select({[Online Security], [Online Backup], [Device Protection], [Tech Support]}, each _ = "Yes")), Int64.Type),
+				    #"Protection Services Held" = Table.AddColumn(#"Protection Sort", "Protection Services Held", each if [Protection Sort] = -1 then "No internet" else Text.From([Protection Sort]), type text),
+				    #"Tenure Band Sort" = Table.AddColumn(#"Protection Services Held", "Tenure Band Sort", each if [Tenure Months] <= 6 then 1 else if [Tenure Months] <= 12 then 2 else if [Tenure Months] <= 24 then 3 else if [Tenure Months] <= 48 then 4 else 5, Int64.Type),
+				    #"Tenure Band" = Table.AddColumn(#"Tenure Band Sort", "Tenure Band", each if [Tenure Months] <= 6 then "0-6 months" else if [Tenure Months] <= 12 then "7-12 months" else if [Tenure Months] <= 24 then "13-24 months" else if [Tenure Months] <= 48 then "25-48 months" else "49-72 months", type text),
+				    #"Charge Band Sort" = Table.AddColumn(#"Tenure Band", "Charge Band Sort", each if [Monthly Charges] < 35 then 1 else if [Monthly Charges] < 70 then 2 else if [Monthly Charges] < 90 then 3 else 4, Int64.Type),
+				    #"Charge Band" = Table.AddColumn(#"Charge Band Sort", "Charge Band", each if [Monthly Charges] < 35 then "Under $35" else if [Monthly Charges] < 70 then "$35-69" else if [Monthly Charges] < 90 then "$70-89" else "$90 and over", type text),
+				    #"Risk Scores" = Csv.Document(File.Contents(RepoRoot & "\reports\tables\customer_risk_scores.csv"), [Delimiter = ",", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Risk Scores Headers" = Table.PromoteHeaders(#"Risk Scores", [PromoteAllScalars = true]),
+				    #"Risk Scores Typed" = Table.TransformColumnTypes(Table.SelectColumns(#"Risk Scores Headers", {"customerID", "segment", "churn_probability", "risk_tier", "recommended_action"}), {{"churn_probability", type number}}, "en-US"),
+				    #"Merged Risk Scores" = Table.NestedJoin(#"Charge Band", {"Customer ID"}, #"Risk Scores Typed", {"customerID"}, "Risk", JoinKind.LeftOuter),
+				    #"Expanded Risk" = Table.ExpandTableColumn(#"Merged Risk Scores", "Risk", {"segment", "churn_probability", "risk_tier", "recommended_action"}, {"Segment", "Churn Probability", "Risk Tier", "Recommended Action"}),
+				    #"Risk Tier Sort" = Table.AddColumn(#"Expanded Risk", "Risk Tier Sort", each if [Risk Tier] = "High" then 1 else if [Risk Tier] = "Medium" then 2 else 3, Int64.Type),
+				    #"Call List" = Table.AddColumn(#"Risk Tier Sort", "Call List", each if [Churn Flag] = 0 and [Risk Tier] = "High" then "Yes" else "No", type text),
+				    #"Selected Columns" = Table.SelectColumns(#"Call List", {"Customer ID", "Gender", "Senior Citizen", "Partner", "Dependents", "Tenure Months", "Phone Service", "Multiple Lines", "Internet Service", "Online Security", "Online Backup", "Device Protection", "Tech Support", "Streaming TV", "Streaming Movies", "Contract", "Paperless Billing", "Payment Method", "Monthly Charges", "Total Charges", "Churn", "Churn Flag", "Customer Status", "Num Services", "Protection Services Held", "Protection Sort", "Tenure Band", "Tenure Band Sort", "Charge Band", "Charge Band Sort", "Segment", "Churn Probability", "Risk Tier", "Risk Tier Sort", "Recommended Action", "Call List"})
+				in
+				    #"Selected Columns"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,15 @@
+table 'Offer Cost'
+	lineageTag: 3a2131ec-3b1a-589e-afb1-69812d7dba6b
+
+	column 'Offer Cost'
+		dataType: int64
+		formatString: $#,0
+		lineageTag: a4be6e9f-8b16-5740-87fe-22cdf6753f57
+		summarizeBy: none
+		sourceColumn: [Offer Cost]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Offer Cost' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 10, 150, 5 ), "Offer Cost", [Value] )

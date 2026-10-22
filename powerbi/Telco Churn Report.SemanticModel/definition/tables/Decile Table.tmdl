@@ -1,0 +1,79 @@
+table 'Decile Table'
+	lineageTag: 93580369-a419-5397-8490-709abfba3559
+
+	column Decile
+		dataType: int64
+		formatString: 0
+		lineageTag: 4f94b243-0f57-5eb3-81c4-992b1dd96141
+		summarizeBy: none
+		sourceColumn: Decile
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customers
+		dataType: int64
+		formatString: #,0
+		lineageTag: b029a40a-5255-554b-acc1-0b7a7c0cf20a
+		summarizeBy: none
+		sourceColumn: Customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column Churners
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6f07d65f-a7b1-5955-b457-13a33219aa8e
+		summarizeBy: none
+		sourceColumn: Churners
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Rate'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 59c3bca3-8608-58b8-af7d-ad92abf79e29
+		summarizeBy: none
+		sourceColumn: Churn Rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg Score'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: d800b523-6ebe-5f7c-940b-864ab8935d49
+		summarizeBy: none
+		sourceColumn: Avg Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lift
+		dataType: double
+		formatString: 0.00
+		lineageTag: 59d5df55-6d90-5b11-bfa3-c4365cdba2d4
+		summarizeBy: none
+		sourceColumn: Lift
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cumulative Share of Churners'
+		dataType: double
+		formatString: 0.0%
+		lineageTag: f071c10b-61f0-57d6-98b7-b9e07795b490
+		summarizeBy: none
+		sourceColumn: Cumulative Share of Churners
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Decile Table' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoRoot & "\reports\tables\decile_table.csv"), [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"decile", Int64.Type}, {"customers", Int64.Type}, {"churners", Int64.Type}, {"churn_rate", type number}, {"avg_score", type number}, {"lift", type number}, {"cum_share_of_churners_%", type number}}, "en-US"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type", {{"decile", "Decile"}, {"customers", "Customers"}, {"churners", "Churners"}, {"churn_rate", "Churn Rate"}, {"avg_score", "Avg Score"}, {"lift", "Lift"}, {"cum_share_of_churners_%", "Cumulative Share of Churners"}}),
+				    #"Percent As Fraction" = Table.TransformColumns(#"Renamed Columns", {{"Cumulative Share of Churners", each _ / 100, type number}})
+				in
+				    #"Percent As Fraction"
+
+	annotation PBI_ResultType = Table

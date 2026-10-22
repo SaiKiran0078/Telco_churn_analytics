@@ -1,0 +1,5 @@
+,contacted,true_churners_reached,gain,cost,net,net_per_1000_customers,churners_reached_%
+Do nothing,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Contact everyone,1409.0,374.0,97974.0,70450.0,27524.0,19534.0,100.0
+Contact all month-to-month customers,773.0,329.0,83946.0,38650.0,45296.0,32147.0,88.0
+Model-targeted (threshold 0.27),571.0,293.0,80587.0,28550.0,52037.0,36932.0,78.0

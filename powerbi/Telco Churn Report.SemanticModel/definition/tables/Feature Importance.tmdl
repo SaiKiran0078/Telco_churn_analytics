@@ -1,0 +1,41 @@
+table 'Feature Importance'
+	lineageTag: 261a290d-9275-54d9-b8cb-add1a1d88c77
+
+	column Feature
+		dataType: string
+		lineageTag: 015bfdbf-d750-5fd7-b8e0-c5103b0ea063
+		summarizeBy: none
+		sourceColumn: Feature
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AUC Drop'
+		dataType: double
+		formatString: 0.000
+		lineageTag: 731d01b4-b4be-59cf-8e5c-941f1668352a
+		summarizeBy: none
+		sourceColumn: AUC Drop
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AUC Drop SD'
+		dataType: double
+		formatString: 0.000
+		lineageTag: 4e4e8d3d-33dd-5230-9c03-b90a2cd10be9
+		summarizeBy: none
+		sourceColumn: AUC Drop SD
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Feature Importance' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoRoot & "\reports\tables\permutation_importance.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"feature", type text}, {"auc_drop", type number}, {"sd", type number}}, "en-US"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type", {{"feature", "Feature"}, {"auc_drop", "AUC Drop"}, {"sd", "AUC Drop SD"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table

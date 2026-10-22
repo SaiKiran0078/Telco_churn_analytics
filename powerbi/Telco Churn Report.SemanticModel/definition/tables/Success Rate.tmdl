@@ -1,0 +1,15 @@
+table 'Success Rate'
+	lineageTag: 56b1bff2-5684-5036-9a80-bc0e17322604
+
+	column 'Success Rate'
+		dataType: double
+		formatString: 0%
+		lineageTag: c3b4a5a3-53b2-5156-92db-a604f9a83ae1
+		summarizeBy: none
+		sourceColumn: [Success Rate]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Success Rate' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 5, 80, 5 ), "Success Rate", [Value] / 100 )

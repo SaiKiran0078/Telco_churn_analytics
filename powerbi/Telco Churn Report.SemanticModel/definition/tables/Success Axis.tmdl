@@ -1,0 +1,15 @@
+table 'Success Axis'
+	lineageTag: 4a430941-64d4-5b1c-a523-4c89c55e33b3
+
+	column 'Success Axis'
+		dataType: double
+		formatString: 0%
+		lineageTag: 21adfc65-33ef-536e-9d12-637518fa9d4e
+		summarizeBy: none
+		sourceColumn: [Success Axis]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Success Axis' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 2, 60, 2 ), "Success Axis", [Value] / 100 )

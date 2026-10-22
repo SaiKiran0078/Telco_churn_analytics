@@ -1,0 +1,30 @@
+table Strategy
+	lineageTag: 0845c702-2330-5104-ba47-d7a95f2f2f85
+
+	column Strategy
+		dataType: string
+		lineageTag: 3e2d9454-a591-5f83-a08a-50fcccea9715
+		summarizeBy: none
+		sourceColumn: [Strategy]
+		sortByColumn: 'Strategy Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Strategy Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b132fdec-d3d2-576d-9513-5e57ea600450
+		summarizeBy: none
+		sourceColumn: [Strategy Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Strategy = calculated
+		mode: import
+		source =
+				DATATABLE (
+				    "Strategy", STRING,
+				    "Strategy Order", INTEGER,
+				    { { "Contact everyone", 1 }, { "Contact all month-to-month", 2 }, { "Model-targeted", 3 } }
+				)

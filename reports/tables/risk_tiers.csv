@@ -1,0 +1,4 @@
+risk_tier,customers,actual_churn_rate,avg_probability,mrr,actual_churners,share_of_all_churners_%
+Low,4171,0.092,0.088,237464.95,385,20.599
+Medium,1315,0.351,0.379,93420.4,461,24.666
+High,1557,0.657,0.645,125231.25,1023,54.735

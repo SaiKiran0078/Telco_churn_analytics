@@ -1,0 +1,8 @@
+# Tested with Python 3.13, pandas 3.0, scikit-learn 1.9, scipy 1.18, matplotlib 3.11, seaborn 0.13, joblib 1.6
+pandas>=2.2
+numpy>=1.26
+scikit-learn==1.9.1
+scipy>=1.11
+matplotlib>=3.8
+seaborn>=0.13
+joblib>=1.3

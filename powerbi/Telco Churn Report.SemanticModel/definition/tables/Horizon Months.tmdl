@@ -1,0 +1,15 @@
+table 'Horizon Months'
+	lineageTag: c200eee4-7207-5682-9885-3861efa6ae43
+
+	column 'Horizon Months'
+		dataType: int64
+		formatString: 0
+		lineageTag: 36fd985d-8b06-524a-b54d-39f6d3ed2c3c
+		summarizeBy: none
+		sourceColumn: [Horizon Months]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Horizon Months' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 3, 24, 1 ), "Horizon Months", [Value] )

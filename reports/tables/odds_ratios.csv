@@ -1,0 +1,15 @@
+feature,odds_ratio
+tenure,0.293
+InternetService_No,0.416
+InternetService_Fiber optic,2.4
+Contract_Month-to-month,1.994
+Contract_Two year,0.512
+TotalCharges,1.653
+PhoneService_Yes,0.619
+OnlineSecurity_Yes,0.68
+PaperlessBilling_Yes,1.452
+TechSupport_Yes,0.713
+MultipleLines_Yes,1.35
+StreamingTV_Yes,1.326
+PaymentMethod_Electronic check,1.324
+StreamingMovies_Yes,1.323

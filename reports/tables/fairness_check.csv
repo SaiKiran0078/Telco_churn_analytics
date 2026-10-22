@@ -1,0 +1,8 @@
+group,value,customers,actual_churn_%,flagged_%,roc_auc,recall_at_threshold
+gender,Female,687,28.1,40.5,0.839,0.777
+gender,Male,722,25.1,40.6,0.846,0.79
+SeniorCitizen,No,1187,23.3,35.5,0.842,0.732
+SeniorCitizen,Yes,222,44.1,67.6,0.786,0.929
+Contract,Month-to-month,773,42.6,70.4,0.744,0.866
+Contract,One year,300,12.0,9.0,0.744,0.222
+Contract,Two year,336,2.7,0.0,0.755,0.0

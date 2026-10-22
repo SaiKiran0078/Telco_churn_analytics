@@ -1,0 +1,11 @@
+,value
+Customers,7043.0
+Churned customers,1869.0
+Churn rate %,26.5
+"Monthly recurring revenue (MRR), $",456117.0
+"MRR lost to churners, $",139131.0
+Share of MRR lost %,30.5
+Avg monthly charge: churned $,74.4
+Avg monthly charge: retained $,61.3
+Median tenure: churned (months),10.0
+Median tenure: retained (months),38.0

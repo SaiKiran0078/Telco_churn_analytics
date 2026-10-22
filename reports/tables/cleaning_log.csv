@@ -1,0 +1,11 @@
+change,rows_touched
+"TotalCharges: blank text -> 0.0 (customers with tenure 0, not billed yet)",11
+OnlineSecurity: 'No internet/phone service' -> 'No',1526
+OnlineBackup: 'No internet/phone service' -> 'No',1526
+DeviceProtection: 'No internet/phone service' -> 'No',1526
+TechSupport: 'No internet/phone service' -> 'No',1526
+StreamingTV: 'No internet/phone service' -> 'No',1526
+StreamingMovies: 'No internet/phone service' -> 'No',1526
+MultipleLines: 'No internet/phone service' -> 'No',682
+SeniorCitizen: 0/1 -> No/Yes,7043
+PaymentMethod: removed ' (automatic)' suffix,3066

@@ -1,0 +1,48 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python caches and generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
+
+# Power BI local state (not project source)
+**/.pbi/
+
+# Power BI packaged files
+*.pbix
+*.pbit
+
+# Locally generated one-off customer scoring exports
+scored.csv
+reports/tables/scored_customers.csv
+# Local project deep-dive notes (keep on your computer, not in GitHub)
+docs/PROJECT_DEEP_DIVE_NOTES.md
+
+# Local scratch notes and personal working files
+notes-local/
+personal-notes.md
+
+# Private interview preparation
+docs/PROJECT_DEEP_DIVE_NOTES.md
+docs/INTERVIEW_TALKING_POINTS.md

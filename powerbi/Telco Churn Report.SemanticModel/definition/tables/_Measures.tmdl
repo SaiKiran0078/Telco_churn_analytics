@@ -1,0 +1,573 @@
+table _Measures
+	lineageTag: f14b8f61-9964-5072-83b0-32d5b55a4880
+
+	/// Number of customers (one row each).
+	measure 'Customer Count' = COUNTROWS ( Customers )
+		formatString: #,0
+		displayFolder: 1 Core KPIs
+		lineageTag: 8e321ec3-23f0-5ca3-82cf-73109b5d52a2
+
+	/// Customers who left in the last month.
+	measure 'Churned Customers' = SUM ( Customers[Churn Flag] )
+		formatString: #,0
+		displayFolder: 1 Core KPIs
+		lineageTag: d9ebb331-47f4-5b66-ac21-fb74a3aa494d
+
+	measure 'Retained Customers' = [Customer Count] - [Churned Customers]
+		formatString: #,0
+		displayFolder: 1 Core KPIs
+		lineageTag: 464b5a1a-763b-533f-aa91-b37a0299263d
+
+	/// Share of customers who churned.
+	measure 'Churn Rate' = DIVIDE ( [Churned Customers], [Customer Count] )
+		formatString: 0.0%
+		displayFolder: 1 Core KPIs
+		lineageTag: bd012096-4f3c-510b-979d-d936a4c26a39
+
+	measure 'Retention Rate' = 1 - [Churn Rate]
+		formatString: 0.0%
+		displayFolder: 1 Core KPIs
+		lineageTag: b02bb3fd-726f-5df9-8cec-5d54c6f31b92
+
+	/// Monthly recurring revenue: sum of monthly charges.
+	measure MRR = SUM ( Customers[Monthly Charges] )
+		formatString: $#,0
+		displayFolder: 1 Core KPIs
+		lineageTag: 050abd50-2aed-5c2a-8889-02d0289b6758
+
+	/// Monthly revenue lost to churners.
+	measure 'MRR Lost' = CALCULATE ( SUM ( Customers[Monthly Charges] ), Customers[Churn Flag] = 1 )
+		formatString: $#,0
+		displayFolder: 1 Core KPIs
+		lineageTag: 0e68820a-2b08-59ad-96eb-9854f1154a2a
+
+	measure 'Share of MRR Lost' = DIVIDE ( [MRR Lost], [MRR] )
+		formatString: 0.0%
+		displayFolder: 1 Core KPIs
+		lineageTag: 8d733d6a-735d-57f3-afad-495639744c8a
+
+	measure 'Annualised Revenue Lost' = [MRR Lost] * 12
+		formatString: $#,0
+		displayFolder: 1 Core KPIs
+		lineageTag: f0e89344-f4db-5bbc-9868-546550d371de
+
+	measure 'MRR Retained' = [MRR] - [MRR Lost]
+		formatString: $#,0
+		displayFolder: 1 Core KPIs
+		lineageTag: dde5e486-8b29-55c5-812e-a07ac175215b
+
+	measure 'Average Monthly Charge' = AVERAGE ( Customers[Monthly Charges] )
+		formatString: $#,0.00
+		displayFolder: 1 Core KPIs
+		lineageTag: ccd37e88-9c0c-5c21-a872-788f25128d4d
+
+	measure 'Avg Charge Churned' = CALCULATE ( AVERAGE ( Customers[Monthly Charges] ), Customers[Churn Flag] = 1 )
+		formatString: $#,0.00
+		displayFolder: 1 Core KPIs
+		lineageTag: b4eef6c6-cd59-5729-ab53-560703d185a5
+
+	measure 'Avg Charge Retained' = CALCULATE ( AVERAGE ( Customers[Monthly Charges] ), Customers[Churn Flag] = 0 )
+		formatString: $#,0.00
+		displayFolder: 1 Core KPIs
+		lineageTag: a3f157d6-3631-5d54-ad53-5f15b72a57b5
+
+	measure 'Average Tenure' = AVERAGE ( Customers[Tenure Months] )
+		formatString: 0.0
+		displayFolder: 1 Core KPIs
+		lineageTag: 9f51f487-6a4f-5964-aa77-cea61bf5b24e
+
+	measure 'Median Tenure Churned' = CALCULATE ( MEDIAN ( Customers[Tenure Months] ), Customers[Churn Flag] = 1 )
+		formatString: 0.0
+		displayFolder: 1 Core KPIs
+		lineageTag: fe277fee-d14b-5bcd-b955-23f8394621fd
+
+	measure 'Median Tenure Retained' = CALCULATE ( MEDIAN ( Customers[Tenure Months] ), Customers[Churn Flag] = 0 )
+		formatString: 0.0
+		displayFolder: 1 Core KPIs
+		lineageTag: 8f7bcfa7-adf1-535d-bc46-c20b2160c0ba
+
+	measure 'Lifetime Revenue Billed' = SUM ( Customers[Total Charges] )
+		formatString: $#,0
+		displayFolder: 1 Core KPIs
+		lineageTag: 3342252b-0032-5fda-89e1-d98133ef7604
+
+	measure 'Average Services Held' = AVERAGE ( Customers[Num Services] )
+		formatString: 0.0
+		displayFolder: 1 Core KPIs
+		lineageTag: ce657cf9-1aa2-5bfa-a9a9-848ebdc81da4
+
+	/// Churn rate of all customers, ignoring every filter.
+	measure 'Overall Churn Rate' = CALCULATE ( [Churn Rate], REMOVEFILTERS ( Customers ) )
+		formatString: 0.0%
+		displayFolder: 2 Compare and share
+		lineageTag: 56bf5c67-f29c-5046-baf9-4d2f566ba316
+
+	/// Percentage points above (+) or below (-) the overall churn rate.
+	measure 'Churn vs Overall (pp)' = [Churn Rate] - [Overall Churn Rate]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 2 Compare and share
+		lineageTag: ab383cc2-014f-5880-bf6a-1aa624a848bb
+
+	/// Churn rate as a multiple of the overall rate.
+	measure 'Churn Lift' = DIVIDE ( [Churn Rate], [Overall Churn Rate] )
+		formatString: 0.00\x
+		displayFolder: 2 Compare and share
+		lineageTag: 32d48707-dc4e-524c-bf77-cfcef127c8a5
+
+	measure 'Share of Customers' = DIVIDE ( [Customer Count], CALCULATE ( [Customer Count], ALLSELECTED ( Customers ) ) )
+		formatString: 0.0%
+		displayFolder: 2 Compare and share
+		lineageTag: 30897ba0-b47c-5116-8115-a56c26f83f2e
+
+	measure 'Share of Churners' = DIVIDE ( [Churned Customers], CALCULATE ( [Churned Customers], ALLSELECTED ( Customers ) ) )
+		formatString: 0.0%
+		displayFolder: 2 Compare and share
+		lineageTag: de426c33-9029-5717-8f41-450545cc4305
+
+	measure 'Share of MRR Lost (of selection)' = DIVIDE ( [MRR Lost], CALCULATE ( [MRR Lost], ALLSELECTED ( Customers ) ) )
+		formatString: 0.0%
+		displayFolder: 2 Compare and share
+		lineageTag: 495543f2-eb42-5576-b9c2-772b182ce745
+
+	measure 'Share of MRR' = DIVIDE ( [MRR], CALCULATE ( [MRR], ALLSELECTED ( Customers ) ) )
+		formatString: 0.0%
+		displayFolder: 2 Compare and share
+		lineageTag: c397ecb4-d2dd-5ef4-af91-6454226b07b8
+
+	measure 'Month-to-month Customers' = CALCULATE ( [Customer Count], Customers[Contract] = "Month-to-month" )
+		formatString: #,0
+		displayFolder: 3 Contract and billing
+		lineageTag: d1a12d10-8c57-5bc3-b1e5-f854f6e331e7
+
+	measure 'Month-to-month Share of Customers' = DIVIDE ( [Month-to-month Customers], [Customer Count] )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: 68f70817-9e20-5575-a079-f8f80fa9c032
+
+	measure 'Month-to-month Share of Churners' = DIVIDE ( CALCULATE ( [Churned Customers], Customers[Contract] = "Month-to-month" ), [Churned Customers] )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: e6a8a28e-0359-5b8e-9170-121f773b3831
+
+	measure 'Churn Rate Month-to-month' = CALCULATE ( [Churn Rate], Customers[Contract] = "Month-to-month" )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: d06a8868-bdbb-5ba5-bc32-938426c2eb17
+
+	measure 'Churn Rate Two-year' = CALCULATE ( [Churn Rate], Customers[Contract] = "Two year" )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: 1a9c19cc-4ce2-5707-8ebd-0e6f3c1242b4
+
+	measure 'Churn Rate Electronic Check' = CALCULATE ( [Churn Rate], Customers[Payment Method] = "Electronic check" )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: 3818df26-0947-51fd-b6ed-3543bc924dfa
+
+	/// Bank transfer or credit card (automatic).
+	measure 'Churn Rate Auto-pay' = CALCULATE ( [Churn Rate], Customers[Payment Method] IN { "Bank transfer", "Credit card" } )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: a6f4a1b5-ffbc-5583-988c-edb4509e5dbc
+
+	measure 'Churn Rate Fiber' = CALCULATE ( [Churn Rate], Customers[Internet Service] = "Fiber optic" )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: d5c16376-dff0-5b9b-b8f9-09483d5f2e01
+
+	measure 'Churn Rate Paperless' = CALCULATE ( [Churn Rate], Customers[Paperless Billing] = "Yes" )
+		formatString: 0.0%
+		displayFolder: 3 Contract and billing
+		lineageTag: 96eeee87-37a4-50cb-a74e-106dc0e1f6ae
+
+	/// Internet customers with none of security, backup, device protection, tech support.
+	measure 'Churn Rate No Protection' = CALCULATE ( [Churn Rate], Customers[Protection Services Held] = "0" )
+		formatString: 0.0%
+		displayFolder: 4 Services and customers
+		lineageTag: 35ae6411-c2d8-524b-b5f5-c5a7bad5e254
+
+	measure 'Churn Rate All Four Protection' = CALCULATE ( [Churn Rate], Customers[Protection Services Held] = "4" )
+		formatString: 0.0%
+		displayFolder: 4 Services and customers
+		lineageTag: 1e46305f-c0ec-5cd2-8dce-bd34c61dce43
+
+	measure 'Churn Rate Senior' = CALCULATE ( [Churn Rate], Customers[Senior Citizen] = "Yes" )
+		formatString: 0.0%
+		displayFolder: 4 Services and customers
+		lineageTag: bff9d2fd-117c-5dbb-8a17-bebb0986d1ef
+
+	measure 'Churn Rate First Year' = CALCULATE ( [Churn Rate], Customers[Tenure Months] <= 12 )
+		formatString: 0.0%
+		displayFolder: 4 Services and customers
+		lineageTag: bd65f0b5-c9d4-595a-87dd-4388393e9059
+
+	measure 'Churn Rate Over 4 Years' = CALCULATE ( [Churn Rate], Customers[Tenure Months] > 48 )
+		formatString: 0.0%
+		displayFolder: 4 Services and customers
+		lineageTag: ccd91de8-96c9-521a-baac-1448899db5ab
+
+	measure 'Avg Services Churned' = CALCULATE ( [Average Services Held], Customers[Churn Flag] = 1 )
+		formatString: 0.0
+		displayFolder: 4 Services and customers
+		lineageTag: 46b95bc8-159d-5fb0-bdfc-04489902af00
+
+	measure 'Avg Services Retained' = CALCULATE ( [Average Services Held], Customers[Churn Flag] = 0 )
+		formatString: 0.0
+		displayFolder: 4 Services and customers
+		lineageTag: 686e0b78-1333-5902-b481-0be957aec01e
+
+	/// Segment that loses the most monthly revenue.
+	measure 'Top Segment by MRR Lost' = MAXX ( TOPN ( 1, VALUES ( Customers[Segment] ), [MRR Lost] ), Customers[Segment] )
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: 70079437-7b9e-59e2-9392-9febd6ec6967
+
+	measure 'Top Segment MRR Lost Share' = VAR s = [Top Segment by MRR Lost] RETURN DIVIDE ( CALCULATE ( [MRR Lost], Customers[Segment] = s ), [MRR Lost] )
+		formatString: 0.0%
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: f0730977-0e98-5932-9b31-26b610c4e205
+
+	measure 'Highest Churn Segment' = MAXX ( TOPN ( 1, VALUES ( Customers[Segment] ), [Churn Rate] ), Customers[Segment] )
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: 60c74d3b-2a01-5d1a-8513-019a2ef9cd07
+
+	measure 'Highest Segment Churn Rate' = MAXX ( VALUES ( Customers[Segment] ), [Churn Rate] )
+		formatString: 0.0%
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: ee64181b-068b-59fe-99cd-50bc97466b3f
+
+	/// Customers still active whose model risk tier is High: the call list.
+	measure 'Active High-Risk Customers' = CALCULATE ( [Customer Count], Customers[Call List] = "Yes" )
+		formatString: #,0
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: e6ffbf0e-2e06-5e92-97af-b84bb8a5ac26
+
+	measure 'Active High-Risk MRR' = CALCULATE ( SUM ( Customers[Monthly Charges] ), Customers[Call List] = "Yes" )
+		formatString: $#,0
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: 9d9e3d0e-b2f2-52b0-bbd2-93e6171f4339
+
+	/// Sum over active customers of churn probability x monthly charge.
+	measure 'Expected MRR Loss (Active)' = SUMX ( FILTER ( Customers, Customers[Churn Flag] = 0 ), Customers[Churn Probability] * Customers[Monthly Charges] )
+		formatString: $#,0
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: 63b88714-6306-51e9-a0a5-2afff78219e7
+
+	measure 'MRR Lost per Churner' = DIVIDE ( [MRR Lost], [Churned Customers] )
+		formatString: $#,0.00
+		displayFolder: 5 Segments and revenue at risk
+		lineageTag: ec87f662-4850-5874-9494-f37cb99fbad7
+
+	/// Test-set ROC-AUC from reports/metrics.json (1,409 unseen customers).
+	measure 'Model ROC-AUC' = 0.8423
+		formatString: 0.000
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 12e7d4ea-e20d-5adb-8bcb-bcc188619bd3
+
+	/// Test-set PR-AUC; the no-skill baseline equals the base rate 0.265.
+	measure 'Model PR-AUC' = 0.6361
+		formatString: 0.000
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: d78bf741-225d-540a-9dfe-c7418e4c45fb
+
+	/// Share of contacted customers who would have churned, at threshold 0.27.
+	measure 'Model Precision' = 0.6592
+		formatString: 0.0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 1f584acf-24ae-5198-9eaa-bdede979e4a0
+
+	/// Share of churners caught, at threshold 0.27.
+	measure 'Model Recall' = 0.5535
+		formatString: 0.0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 898e6e1b-751c-5a45-b13d-6239f017877d
+
+	measure 'Model F1' = 0.6017
+		formatString: 0.000
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: e64478c1-2834-5827-b1e6-5e22c195f1af
+
+	measure 'Model Brier Score' = 0.1379
+		formatString: 0.000
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 65242e3e-2043-5d57-9581-f1ac9e79b7a9
+
+	/// Contact threshold chosen from campaign economics.
+	measure 'Model Threshold' = 0.27
+		formatString: 0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 7bbb8f31-05ce-50c9-a121-f2e31c3d9020
+
+	measure 'Avg Churn Probability' = AVERAGE ( Customers[Churn Probability] )
+		formatString: 0.0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 54625caa-22eb-511c-8395-784e5bd06a55
+
+	/// Predicted minus actual churn rate; near zero means the scores behave like probabilities.
+	measure 'Calibration Gap (pp)' = [Avg Churn Probability] - [Churn Rate]
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 90e1fa89-e9f8-5968-8781-68ca5eacc6a0
+
+	measure 'Decile Churn Rate' = MAX ( 'Decile Table'[Churn Rate] )
+		formatString: 0.0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: ffa9bb6b-062d-5c22-b261-f4eeab23b5de
+
+	measure 'Decile Lift' = MAX ( 'Decile Table'[Lift] )
+		formatString: 0.00\x
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 012f1be9-b820-5c24-9c39-33c51976ef5c
+
+	measure 'Decile Cumulative Capture' = MAX ( 'Decile Table'[Cumulative Share of Churners] )
+		formatString: 0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: cb0861cb-3c06-5805-b03d-d500311fbfb3
+
+	/// Share of churners found in the top 20% of customers by score (test set).
+	measure 'Top 20% Capture' = CALCULATE ( MAX ( 'Decile Table'[Cumulative Share of Churners] ), 'Decile Table'[Decile] = 2 )
+		formatString: 0.0%
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: e6fee569-a568-5cab-b238-3c27341281c4
+
+	measure 'Top Decile Lift' = CALCULATE ( MAX ( 'Decile Table'[Lift] ), 'Decile Table'[Decile] = 1 )
+		formatString: 0.00\x
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 8f1a13d5-86a2-5853-8e31-21f62546c7d3
+
+	/// ROC-AUC lost when the feature is shuffled (permutation importance, test set).
+	measure 'Feature AUC Drop' = MAX ( 'Feature Importance'[AUC Drop] )
+		formatString: 0.000
+		displayFolder: 6 Risk model (from Python)
+		lineageTag: 90123cfc-0420-503d-8291-99b4316a3208
+
+	/// Cost of one retention offer (slicer; default $50).
+	measure 'Offer Cost Selected' = SELECTEDVALUE ( 'Offer Cost'[Offer Cost], 50 )
+		formatString: $#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: f7ee78a9-9f11-595a-b3d2-d2f522a2748f
+
+	/// Share of would-be churners an offer keeps (slicer; default 30%).
+	measure 'Success Rate Selected' = SELECTEDVALUE ( 'Success Rate'[Success Rate], 0.3 )
+		formatString: 0%
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 39d22c60-5098-5a11-ba8b-3402a9956a5e
+
+	/// Months of revenue credited for a saved customer (default 12).
+	measure 'Horizon Months Selected' = SELECTEDVALUE ( 'Horizon Months'[Horizon Months], 12 )
+		formatString: 0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: b30a86af-e054-5e5a-8347-8afdec48ab5f
+
+	/// Contact customers whose churn probability is at least this (default 27%).
+	measure 'Threshold Selected' = SELECTEDVALUE ( 'Risk Threshold'[Risk Threshold], 0.27 )
+		formatString: 0%
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: a0172022-1fe0-5cbe-a12b-3df9cd190832
+
+	measure 'Contacted (Model)' = VAR t = [Threshold Selected] RETURN COUNTROWS ( FILTER ( Customers, Customers[Churn Probability] >= t ) )
+		formatString: #,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: f278cecd-c174-5553-b203-b4908f7266d2
+
+	measure 'Churners Reached (Model)' = VAR t = [Threshold Selected] RETURN COUNTROWS ( FILTER ( Customers, Customers[Churn Probability] >= t && Customers[Churn Flag] = 1 ) )
+		formatString: #,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 36e5166a-f834-5700-8105-dcfbb5fa5b64
+
+	measure 'Churner MRR Reached (Model)' = VAR t = [Threshold Selected] RETURN SUMX ( FILTER ( Customers, Customers[Churn Probability] >= t && Customers[Churn Flag] = 1 ), Customers[Monthly Charges] )
+		formatString: $#,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: e298f7fd-26b3-5885-80e7-28d154053b09
+
+	measure 'Customers Saved (Model)' = [Churners Reached (Model)] * [Success Rate Selected]
+		formatString: #,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 0870daa3-0a99-5a99-8ffe-0cb6c4231328
+
+	measure 'Revenue Retained (Model)' = [Churner MRR Reached (Model)] * [Success Rate Selected] * [Horizon Months Selected]
+		formatString: $#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 28276756-84aa-5fd8-9b34-eb700e982194
+
+	measure 'Campaign Cost (Model)' = [Contacted (Model)] * [Offer Cost Selected]
+		formatString: $#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: a5efd4d1-9fdb-5d57-9076-a2036bf411ed
+
+	measure 'Net Value (Model)' = [Revenue Retained (Model)] - [Campaign Cost (Model)]
+		formatString: $#,0;-$#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 1557026a-81dd-5969-aca1-b933fb82e62f
+
+	measure 'ROI (Model)' = DIVIDE ( [Net Value (Model)], [Campaign Cost (Model)] )
+		formatString: 0%;-0%
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 300078c0-bb69-5e1d-96b7-2cdd0cd88c45
+
+	/// Offer success rate at which the model-targeted campaign just pays for itself.
+	measure 'Break-even Success Rate (Model)' = DIVIDE ( [Campaign Cost (Model)], [Churner MRR Reached (Model)] * [Horizon Months Selected] )
+		formatString: 0.0%
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 6478c577-5541-5599-8197-15e477bb2257
+
+	measure 'Contacted (Everyone)' = COUNTROWS ( Customers )
+		formatString: #,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 6be5b17d-d75e-57c8-bc8d-6a777e0f235b
+
+	measure 'Churners Reached (Everyone)' = [Churned Customers]
+		formatString: #,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 2a595305-b4f8-58c1-a7a3-4c78007c5e0f
+
+	measure 'Revenue Retained (Everyone)' = [MRR Lost] * [Success Rate Selected] * [Horizon Months Selected]
+		formatString: $#,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: f146aa26-7cce-5d9a-88e9-09ed8b0cf8b8
+
+	measure 'Campaign Cost (Everyone)' = [Contacted (Everyone)] * [Offer Cost Selected]
+		formatString: $#,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 0e9f4ad1-2b07-5f4d-b691-7dc958bf56ef
+
+	measure 'Net Value (Everyone)' = [Revenue Retained (Everyone)] - [Campaign Cost (Everyone)]
+		formatString: $#,0;-$#,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: c373518a-746c-53de-b2f2-045a2df3ae43
+
+	measure 'Contacted (M2M)' = CALCULATE ( COUNTROWS ( Customers ), Customers[Contract] = "Month-to-month" )
+		formatString: #,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 1b7552a0-0d2d-5fff-b4b0-e9ee7cf3cd1a
+
+	measure 'Churners Reached (M2M)' = CALCULATE ( [Churned Customers], Customers[Contract] = "Month-to-month" )
+		formatString: #,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 8542fd70-699c-5c6b-9c36-9db71a863ae1
+
+	measure 'Revenue Retained (M2M)' = CALCULATE ( [MRR Lost], Customers[Contract] = "Month-to-month" ) * [Success Rate Selected] * [Horizon Months Selected]
+		formatString: $#,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 4c92d606-f7bd-5751-88b7-77346bee56d0
+
+	measure 'Campaign Cost (M2M)' = [Contacted (M2M)] * [Offer Cost Selected]
+		formatString: $#,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: ac4d0a2b-d52f-5a85-afc3-f04b6f4c1bdd
+
+	measure 'Net Value (M2M)' = [Revenue Retained (M2M)] - [Campaign Cost (M2M)]
+		formatString: $#,0;-$#,0
+		isHidden
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 2de12e92-0a60-5b88-8878-40d6f8b56505
+
+	measure 'Strategy Contacted' = SWITCH ( SELECTEDVALUE ( Strategy[Strategy] ), "Contact everyone", [Contacted (Everyone)], "Contact all month-to-month", [Contacted (M2M)], "Model-targeted", [Contacted (Model)], BLANK () )
+		formatString: #,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: b013a084-b05f-56c1-8dc4-e55144f86912
+
+	measure 'Strategy Churners Reached' = SWITCH ( SELECTEDVALUE ( Strategy[Strategy] ), "Contact everyone", [Churners Reached (Everyone)], "Contact all month-to-month", [Churners Reached (M2M)], "Model-targeted", [Churners Reached (Model)], BLANK () )
+		formatString: #,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 05eb06a2-b724-5911-a8ec-cc39c8efed4d
+
+	measure 'Strategy Cost' = SWITCH ( SELECTEDVALUE ( Strategy[Strategy] ), "Contact everyone", [Campaign Cost (Everyone)], "Contact all month-to-month", [Campaign Cost (M2M)], "Model-targeted", [Campaign Cost (Model)], BLANK () )
+		formatString: $#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 4c24bc45-8bb2-534b-9bcf-1078843765ae
+
+	measure 'Strategy Revenue Retained' = SWITCH ( SELECTEDVALUE ( Strategy[Strategy] ), "Contact everyone", [Revenue Retained (Everyone)], "Contact all month-to-month", [Revenue Retained (M2M)], "Model-targeted", [Revenue Retained (Model)], BLANK () )
+		formatString: $#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: ae5cd67d-23e5-548e-aa1b-b9274fdcb5f8
+
+	measure 'Strategy Net Value' = SWITCH ( SELECTEDVALUE ( Strategy[Strategy] ), "Contact everyone", [Net Value (Everyone)], "Contact all month-to-month", [Net Value (M2M)], "Model-targeted", [Net Value (Model)], BLANK () )
+		formatString: $#,0;-$#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 2b585cb7-2d34-56d2-8b6b-1234a1235dac
+
+	measure 'Strategy Net per 1,000 Customers' = DIVIDE ( [Strategy Net Value], [Customer Count] ) * 1000
+		formatString: $#,0;-$#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: d91fdf49-7a73-5e22-8cbc-afa63e90fa02
+
+	measure 'Strategy Churners Reached %' = DIVIDE ( [Strategy Churners Reached], [Churned Customers] )
+		formatString: 0%
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 3f1ff86d-c75d-583a-b4e9-bec10394dc49
+
+	/// Net value of the model-targeted campaign at each contact threshold on the axis.
+	measure 'Net Value at Axis Threshold' = VAR t = MAX ( 'Threshold Axis'[Threshold Axis] ) VAR sel = FILTER ( Customers, Customers[Churn Probability] >= t ) RETURN SUMX ( FILTER ( sel, Customers[Churn Flag] = 1 ), Customers[Monthly Charges] ) * [Success Rate Selected] * [Horizon Months Selected] - COUNTROWS ( sel ) * [Offer Cost Selected]
+		formatString: $#,0;-$#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 70ff53b8-51a5-50af-a0a8-0a3957a85ce0
+
+	/// Net value of the model-targeted campaign at each offer success rate on the axis.
+	measure 'Net Value at Axis Success Rate' = [Churner MRR Reached (Model)] * MAX ( 'Success Axis'[Success Axis] ) * [Horizon Months Selected] - [Campaign Cost (Model)]
+		formatString: $#,0;-$#,0
+		displayFolder: 7 Retention ROI simulator
+		lineageTag: 4e57f704-1619-528c-98e4-664f019a2553
+
+	measure 'Insight Contract' = "Month-to-month contracts are " & FORMAT ( [Month-to-month Share of Customers], "0%" ) & " of customers but " & FORMAT ( [Month-to-month Share of Churners], "0%" ) & " of churners; churn is " & FORMAT ( [Churn Rate Month-to-month], "0%" ) & " versus " & FORMAT ( [Churn Rate Two-year], "0%" ) & " on two-year contracts."
+		displayFolder: 8 Narrative text
+		lineageTag: 56221f42-6af5-5a63-a517-fb40924a7428
+
+	measure 'Insight Protection' = "Internet customers with no protection service churn at " & FORMAT ( [Churn Rate No Protection], "0%" ) & "; with all four, only " & FORMAT ( [Churn Rate All Four Protection], "0%" ) & "."
+		displayFolder: 8 Narrative text
+		lineageTag: 676e0a7a-fd73-5ae1-9511-3ac856d4f4e1
+
+	measure 'Insight Payment' = "Electronic-check payers churn at " & FORMAT ( [Churn Rate Electronic Check], "0%" ) & " versus " & FORMAT ( [Churn Rate Auto-pay], "0%" ) & " for automatic payment (bank transfer or card)."
+		displayFolder: 8 Narrative text
+		lineageTag: 787d36ff-9cda-5c95-867b-1df909d64d2a
+
+	measure 'Insight Tenure' = "The first year is the danger zone: " & FORMAT ( [Churn Rate First Year], "0%" ) & " churn in months 0-12 against " & FORMAT ( [Churn Rate Over 4 Years], "0%" ) & " after four years."
+		displayFolder: 8 Narrative text
+		lineageTag: 797e821f-6498-5df5-9f12-394c83bbff01
+
+	measure 'Insight Revenue' = "Churners take " & FORMAT ( [MRR Lost], "$#,0" ) & " of monthly revenue (" & FORMAT ( [Share of MRR Lost], "0.0%" ) & "), about " & FORMAT ( [Annualised Revenue Lost], "$#,0" ) & " a year."
+		displayFolder: 8 Narrative text
+		lineageTag: b19111ca-94fb-546d-916b-8e02eb856663
+
+	measure 'Insight Segment' = "Largest revenue leak: " & [Top Segment by MRR Lost] & " (" & FORMAT ( [Top Segment MRR Lost Share], "0%" ) & " of revenue lost)."
+		displayFolder: 8 Narrative text
+		lineageTag: 44030305-4c97-5199-a8eb-5ade7bfa2904
+
+	measure 'Insight Model' = "The model ranks customers well (ROC-AUC " & FORMAT ( [Model ROC-AUC], "0.00" ) & "): the top 20% by score hold " & FORMAT ( [Top 20% Capture], "0%" ) & " of churners."
+		displayFolder: 8 Narrative text
+		lineageTag: ee334b13-4a2e-5513-8ae2-7a22730d0094
+
+	measure 'Insight Call List' = FORMAT ( [Active High-Risk Customers], "#,0" ) & " active customers are in the High risk tier, worth " & FORMAT ( [Active High-Risk MRR], "$#,0" ) & " a month: call them first."
+		displayFolder: 8 Narrative text
+		lineageTag: 8f29f9a0-109c-568b-aadd-170d4b78a3ee
+
+	measure 'Insight Simulator' = "At " & FORMAT ( [Offer Cost Selected], "$#,0" ) & " per offer and a " & FORMAT ( [Success Rate Selected], "0%" ) & " success rate, the model-targeted campaign nets " & FORMAT ( [Net Value (Model)], "$#,0" ) & "; it breaks even at " & FORMAT ( [Break-even Success Rate (Model)], "0.0%" ) & "."
+		displayFolder: 8 Narrative text
+		lineageTag: 193f58d9-f690-59b2-b253-9adf4be4c779
+
+	measure 'Churn Colour' = IF ( [Churn Rate] > [Overall Churn Rate], "#B42323", "#0B6B0B" )
+		isHidden
+		displayFolder: 9 Formatting helpers
+		lineageTag: d0b9937b-6cce-553c-a1b4-6cc3c549b458
+
+	column Value
+		dataType: int64
+		isHidden
+		lineageTag: cb24ddf5-fb47-55de-a663-c53a3a3894a8
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = DATATABLE ( "Value", INTEGER, { { 1 } } )

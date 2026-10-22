@@ -1,0 +1,15 @@
+table 'Threshold Axis'
+	lineageTag: f55809cf-5631-537b-bf8f-0841f799ea7a
+
+	column 'Threshold Axis'
+		dataType: double
+		formatString: 0%
+		lineageTag: 44540c5e-ac1d-54eb-b04a-90074a65010c
+		summarizeBy: none
+		sourceColumn: [Threshold Axis]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Threshold Axis' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 5, 95, 1 ), "Threshold Axis", [Value] / 100 )

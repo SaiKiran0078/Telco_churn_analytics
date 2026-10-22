@@ -1,0 +1,179 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "8edd42ce747d6736cc2f",
+  "position": {
+    "x": 15.700322327728896,
+    "y": 262.62357348201061,
+    "z": 17000,
+    "height": 149.86671312832129,
+    "width": 757.89737782036764,
+    "tabOrder": 17000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Strategy"
+                    }
+                  },
+                  "Property": "Strategy"
+                }
+              },
+              "queryRef": "Strategy.Strategy",
+              "nativeQueryRef": "Strategy"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Strategy Contacted"
+                }
+              },
+              "queryRef": "_Measures.Strategy Contacted",
+              "nativeQueryRef": "Strategy Contacted"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Strategy Churners Reached"
+                }
+              },
+              "queryRef": "_Measures.Strategy Churners Reached",
+              "nativeQueryRef": "Strategy Churners Reached"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Strategy Churners Reached %"
+                }
+              },
+              "queryRef": "_Measures.Strategy Churners Reached %",
+              "nativeQueryRef": "Strategy Churners Reached %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Strategy Cost"
+                }
+              },
+              "queryRef": "_Measures.Strategy Cost",
+              "nativeQueryRef": "Strategy Cost"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Strategy Revenue Retained"
+                }
+              },
+              "queryRef": "_Measures.Strategy Revenue Retained",
+              "nativeQueryRef": "Strategy Revenue Retained"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Strategy Net Value"
+                }
+              },
+              "queryRef": "_Measures.Strategy Net Value",
+              "nativeQueryRef": "Strategy Net Value"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Strategy Net per 1,000 Customers"
+                }
+              },
+              "queryRef": "_Measures.Strategy Net per 1,000 Customers",
+              "nativeQueryRef": "Strategy Net per 1,000 Customers"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRowsNew'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

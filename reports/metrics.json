@@ -1,0 +1,68 @@
+{
+  "final_model": "Logistic regression (tuned)",
+  "threshold": 0.27,
+  "test": {
+    "roc_auc": 0.8423,
+    "pr_auc": 0.6361,
+    "brier": 0.1379,
+    "precision": 0.6592,
+    "recall": 0.5535,
+    "f1": 0.6017
+  },
+  "baseline_test": {
+    "roc_auc": 0.5,
+    "pr_auc": 0.2654,
+    "brier": 0.195,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "bootstrap_ci": {
+    "roc_auc_95ci": [
+      0.819,
+      0.864
+    ],
+    "pr_auc_95ci": [
+      0.585,
+      0.685
+    ]
+  },
+  "cv_table": {
+    "Baseline (predict base rate)": {
+      "roc_auc": 0.5,
+      "roc_auc_sd": 0.0,
+      "pr_auc": 0.2654,
+      "recall@0.5": 0.0,
+      "precision@0.5": 0.0
+    },
+    "Logistic regression": {
+      "roc_auc": 0.8452,
+      "roc_auc_sd": 0.0124,
+      "pr_auc": 0.6592,
+      "recall@0.5": 0.5418,
+      "precision@0.5": 0.652
+    },
+    "Random forest": {
+      "roc_auc": 0.8433,
+      "roc_auc_sd": 0.0084,
+      "pr_auc": 0.6539,
+      "recall@0.5": 0.4876,
+      "precision@0.5": 0.6614
+    },
+    "Gradient boosting": {
+      "roc_auc": 0.8442,
+      "roc_auc_sd": 0.0115,
+      "pr_auc": 0.6558,
+      "recall@0.5": 0.5124,
+      "precision@0.5": 0.6591
+    }
+  },
+  "assumptions": {
+    "offer_cost": 50.0,
+    "offer_success_rate": 0.3,
+    "horizon_months": 12
+  },
+  "train_rows": 5634,
+  "test_rows": 1409,
+  "test_churn_rate": 0.2654364797728886
+}
